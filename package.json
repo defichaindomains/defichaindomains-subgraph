@@ -1,0 +1,22 @@
+{
+  "name": "defichaindomains-subgraph",
+  "version": "1.0.0",
+  "repository": "https://github.com/defichaindomains/subgraph",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --product hosted-service miu-digital/dfi-domains-sub-graph-mumbai",
+    "create-local": "graph create --node http://localhost:8020/ miu-digital/dfi-domains-sub-graph-mumbai",
+    "remove-local": "graph remove --node http://localhost:8020/ miu-digital/dfi-domains-sub-graph-mumbai",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 miu-digital/dfi-domains-sub-graph-mumbai",
+    "test": "graph test"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-ts": "^0.28.1"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.35.0",
+    "matchstick-as": "0.5.0"
+  }
+}
