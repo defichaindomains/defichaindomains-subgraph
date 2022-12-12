@@ -1,6 +1,6 @@
 # ENS Subgraph
 
-This Subgraph sources events from the ENS contracts. This includes the ENS registry, the Auction Registrar, and any resolvers that are created and linked to domains. The resolvers are added through dynamic data sources. More information on all of this can be found at [The Graph Documentation](https://thegraph.com/docs/developer/quick-start/).
+This Subgraph sources events from the Defichain Domains contracts. This includes the Defichain Domains registry, and any resolvers that are created and linked to domains. The resolvers are added through dynamic data sources. More information on all of this can be found at [The Graph Documentation](https://thegraph.com/docs/developer/quick-start/).
 
 # Example Queries
 
@@ -66,14 +66,17 @@ Here we have example queries, so that you don't have to type them in yourself ea
       }
     }
   }
-  registrations(where: { labelName_not: null }, orderBy: expiryDate, orderDirection: asc, first: 10, skip: 0) {
-    expiryDate
+  registrations(
+    where: { labelName_not: null }
+    orderDirection: asc
+    first: 10
+    skip: 0
+  ) {
     labelName
-    domain{
+    domain {
       name
       labelName
     }
   }
 }
-
 ```
