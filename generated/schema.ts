@@ -612,15 +612,6 @@ export class Registration extends Entity {
     this.set("registrationDate", Value.fromBigInt(value));
   }
 
-  get expiryDate(): BigInt {
-    let value = this.get("expiryDate");
-    return value!.toBigInt();
-  }
-
-  set expiryDate(value: BigInt) {
-    this.set("expiryDate", Value.fromBigInt(value));
-  }
-
   get cost(): BigInt | null {
     let value = this.get("cost");
     if (!value || value.kind == ValueKind.NULL) {
@@ -739,83 +730,6 @@ export class NameRegistered extends Entity {
 
   set registrant(value: string) {
     this.set("registrant", Value.fromString(value));
-  }
-
-  get expiryDate(): BigInt {
-    let value = this.get("expiryDate");
-    return value!.toBigInt();
-  }
-
-  set expiryDate(value: BigInt) {
-    this.set("expiryDate", Value.fromBigInt(value));
-  }
-}
-
-export class NameRenewed extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(id != null, "Cannot save NameRenewed entity without an ID");
-    if (id) {
-      assert(
-        id.kind == ValueKind.STRING,
-        `Entities of type NameRenewed must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
-      );
-      store.set("NameRenewed", id.toString(), this);
-    }
-  }
-
-  static load(id: string): NameRenewed | null {
-    return changetype<NameRenewed | null>(store.get("NameRenewed", id));
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value!.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get registration(): string {
-    let value = this.get("registration");
-    return value!.toString();
-  }
-
-  set registration(value: string) {
-    this.set("registration", Value.fromString(value));
-  }
-
-  get blockNumber(): i32 {
-    let value = this.get("blockNumber");
-    return value!.toI32();
-  }
-
-  set blockNumber(value: i32) {
-    this.set("blockNumber", Value.fromI32(value));
-  }
-
-  get transactionID(): Bytes {
-    let value = this.get("transactionID");
-    return value!.toBytes();
-  }
-
-  set transactionID(value: Bytes) {
-    this.set("transactionID", Value.fromBytes(value));
-  }
-
-  get expiryDate(): BigInt {
-    let value = this.get("expiryDate");
-    return value!.toBigInt();
-  }
-
-  set expiryDate(value: BigInt) {
-    this.set("expiryDate", Value.fromBigInt(value));
   }
 }
 
