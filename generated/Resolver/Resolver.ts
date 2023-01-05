@@ -347,6 +347,14 @@ export class Resolver__ABIResult {
     map.set("value1", ethereum.Value.fromBytes(this.value1));
     return map;
   }
+
+  getValue0(): BigInt {
+    return this.value0;
+  }
+
+  getValue1(): Bytes {
+    return this.value1;
+  }
 }
 
 export class Resolver__pubkeyResult {
@@ -363,6 +371,14 @@ export class Resolver__pubkeyResult {
     map.set("value0", ethereum.Value.fromFixedBytes(this.value0));
     map.set("value1", ethereum.Value.fromFixedBytes(this.value1));
     return map;
+  }
+
+  getX(): Bytes {
+    return this.value0;
+  }
+
+  getY(): Bytes {
+    return this.value1;
   }
 }
 

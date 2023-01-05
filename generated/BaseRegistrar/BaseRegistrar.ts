@@ -226,21 +226,6 @@ export class BaseRegistrar extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(value[0].toBytes());
   }
 
-  baseURI(): string {
-    let result = super.call("baseURI", "baseURI():(string)", []);
-
-    return result[0].toString();
-  }
-
-  try_baseURI(): ethereum.CallResult<string> {
-    let result = super.tryCall("baseURI", "baseURI():(string)", []);
-    if (result.reverted) {
-      return new ethereum.CallResult();
-    }
-    let value = result.value;
-    return ethereum.CallResult.fromValue(value[0].toString());
-  }
-
   controllers(param0: Address): boolean {
     let result = super.call("controllers", "controllers(address):(bool)", [
       ethereum.Value.fromAddress(param0)
@@ -322,21 +307,6 @@ export class BaseRegistrar extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(value[0].toBoolean());
   }
 
-  name(): string {
-    let result = super.call("name", "name():(string)", []);
-
-    return result[0].toString();
-  }
-
-  try_name(): ethereum.CallResult<string> {
-    let result = super.tryCall("name", "name():(string)", []);
-    if (result.reverted) {
-      return new ethereum.CallResult();
-    }
-    let value = result.value;
-    return ethereum.CallResult.fromValue(value[0].toString());
-  }
-
   owner(): Address {
     let result = super.call("owner", "owner():(address)", []);
 
@@ -371,163 +341,27 @@ export class BaseRegistrar extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(value[0].toAddress());
   }
 
-  supportsInterface(interfaceID: Bytes): boolean {
+  supportsInterface(interfaceId: Bytes): boolean {
     let result = super.call(
       "supportsInterface",
       "supportsInterface(bytes4):(bool)",
-      [ethereum.Value.fromFixedBytes(interfaceID)]
+      [ethereum.Value.fromFixedBytes(interfaceId)]
     );
 
     return result[0].toBoolean();
   }
 
-  try_supportsInterface(interfaceID: Bytes): ethereum.CallResult<boolean> {
+  try_supportsInterface(interfaceId: Bytes): ethereum.CallResult<boolean> {
     let result = super.tryCall(
       "supportsInterface",
       "supportsInterface(bytes4):(bool)",
-      [ethereum.Value.fromFixedBytes(interfaceID)]
+      [ethereum.Value.fromFixedBytes(interfaceId)]
     );
     if (result.reverted) {
       return new ethereum.CallResult();
     }
     let value = result.value;
     return ethereum.CallResult.fromValue(value[0].toBoolean());
-  }
-
-  symbol(): string {
-    let result = super.call("symbol", "symbol():(string)", []);
-
-    return result[0].toString();
-  }
-
-  try_symbol(): ethereum.CallResult<string> {
-    let result = super.tryCall("symbol", "symbol():(string)", []);
-    if (result.reverted) {
-      return new ethereum.CallResult();
-    }
-    let value = result.value;
-    return ethereum.CallResult.fromValue(value[0].toString());
-  }
-
-  tokenByIndex(index: BigInt): BigInt {
-    let result = super.call("tokenByIndex", "tokenByIndex(uint256):(uint256)", [
-      ethereum.Value.fromUnsignedBigInt(index)
-    ]);
-
-    return result[0].toBigInt();
-  }
-
-  try_tokenByIndex(index: BigInt): ethereum.CallResult<BigInt> {
-    let result = super.tryCall(
-      "tokenByIndex",
-      "tokenByIndex(uint256):(uint256)",
-      [ethereum.Value.fromUnsignedBigInt(index)]
-    );
-    if (result.reverted) {
-      return new ethereum.CallResult();
-    }
-    let value = result.value;
-    return ethereum.CallResult.fromValue(value[0].toBigInt());
-  }
-
-  tokenOfOwnerByIndex(owner: Address, index: BigInt): BigInt {
-    let result = super.call(
-      "tokenOfOwnerByIndex",
-      "tokenOfOwnerByIndex(address,uint256):(uint256)",
-      [
-        ethereum.Value.fromAddress(owner),
-        ethereum.Value.fromUnsignedBigInt(index)
-      ]
-    );
-
-    return result[0].toBigInt();
-  }
-
-  try_tokenOfOwnerByIndex(
-    owner: Address,
-    index: BigInt
-  ): ethereum.CallResult<BigInt> {
-    let result = super.tryCall(
-      "tokenOfOwnerByIndex",
-      "tokenOfOwnerByIndex(address,uint256):(uint256)",
-      [
-        ethereum.Value.fromAddress(owner),
-        ethereum.Value.fromUnsignedBigInt(index)
-      ]
-    );
-    if (result.reverted) {
-      return new ethereum.CallResult();
-    }
-    let value = result.value;
-    return ethereum.CallResult.fromValue(value[0].toBigInt());
-  }
-
-  tokenURI(tokenId: BigInt): string {
-    let result = super.call("tokenURI", "tokenURI(uint256):(string)", [
-      ethereum.Value.fromUnsignedBigInt(tokenId)
-    ]);
-
-    return result[0].toString();
-  }
-
-  try_tokenURI(tokenId: BigInt): ethereum.CallResult<string> {
-    let result = super.tryCall("tokenURI", "tokenURI(uint256):(string)", [
-      ethereum.Value.fromUnsignedBigInt(tokenId)
-    ]);
-    if (result.reverted) {
-      return new ethereum.CallResult();
-    }
-    let value = result.value;
-    return ethereum.CallResult.fromValue(value[0].toString());
-  }
-
-  totalSupply(): BigInt {
-    let result = super.call("totalSupply", "totalSupply():(uint256)", []);
-
-    return result[0].toBigInt();
-  }
-
-  try_totalSupply(): ethereum.CallResult<BigInt> {
-    let result = super.tryCall("totalSupply", "totalSupply():(uint256)", []);
-    if (result.reverted) {
-      return new ethereum.CallResult();
-    }
-    let value = result.value;
-    return ethereum.CallResult.fromValue(value[0].toBigInt());
-  }
-}
-
-export class ConstructorCall extends ethereum.Call {
-  get inputs(): ConstructorCall__Inputs {
-    return new ConstructorCall__Inputs(this);
-  }
-
-  get outputs(): ConstructorCall__Outputs {
-    return new ConstructorCall__Outputs(this);
-  }
-}
-
-export class ConstructorCall__Inputs {
-  _call: ConstructorCall;
-
-  constructor(call: ConstructorCall) {
-    this._call = call;
-  }
-
-  get _ens(): Address {
-    return this._call.inputValues[0].value.toAddress();
-  }
-
-  get _baseNode(): Bytes {
-    return this._call.inputValues[1].value.toBytes();
-  }
-}
-
-export class ConstructorCall__Outputs {
-  _call: ConstructorCall;
-
-  constructor(call: ConstructorCall) {
-    this._call = call;
   }
 }
 
@@ -659,40 +493,6 @@ export class RegisterCall__Outputs {
   _call: RegisterCall;
 
   constructor(call: RegisterCall) {
-    this._call = call;
-  }
-}
-
-export class RegisterOnlyCall extends ethereum.Call {
-  get inputs(): RegisterOnlyCall__Inputs {
-    return new RegisterOnlyCall__Inputs(this);
-  }
-
-  get outputs(): RegisterOnlyCall__Outputs {
-    return new RegisterOnlyCall__Outputs(this);
-  }
-}
-
-export class RegisterOnlyCall__Inputs {
-  _call: RegisterOnlyCall;
-
-  constructor(call: RegisterOnlyCall) {
-    this._call = call;
-  }
-
-  get id(): BigInt {
-    return this._call.inputValues[0].value.toBigInt();
-  }
-
-  get owner(): Address {
-    return this._call.inputValues[1].value.toAddress();
-  }
-}
-
-export class RegisterOnlyCall__Outputs {
-  _call: RegisterOnlyCall;
-
-  constructor(call: RegisterOnlyCall) {
     this._call = call;
   }
 }
@@ -854,7 +654,7 @@ export class SetApprovalForAllCall__Inputs {
     return this._call.inputValues[0].value.toAddress();
   }
 
-  get approved(): boolean {
+  get _approved(): boolean {
     return this._call.inputValues[1].value.toBoolean();
   }
 }
@@ -863,36 +663,6 @@ export class SetApprovalForAllCall__Outputs {
   _call: SetApprovalForAllCall;
 
   constructor(call: SetApprovalForAllCall) {
-    this._call = call;
-  }
-}
-
-export class SetBaseURICall extends ethereum.Call {
-  get inputs(): SetBaseURICall__Inputs {
-    return new SetBaseURICall__Inputs(this);
-  }
-
-  get outputs(): SetBaseURICall__Outputs {
-    return new SetBaseURICall__Outputs(this);
-  }
-}
-
-export class SetBaseURICall__Inputs {
-  _call: SetBaseURICall;
-
-  constructor(call: SetBaseURICall) {
-    this._call = call;
-  }
-
-  get _newBaseURI(): string {
-    return this._call.inputValues[0].value.toString();
-  }
-}
-
-export class SetBaseURICall__Outputs {
-  _call: SetBaseURICall;
-
-  constructor(call: SetBaseURICall) {
     this._call = call;
   }
 }
