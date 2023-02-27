@@ -6,10 +6,10 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --product hosted-service miu-digital/dfi-domains-sub-graph-mumbai",
-    "create-local": "graph create --node http://localhost:8020/ miu-digital/dfi-domains-sub-graph-mumbai",
-    "remove-local": "graph remove --node http://localhost:8020/ miu-digital/dfi-domains-sub-graph-mumbai",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 miu-digital/dfi-domains-sub-graph-mumbai",
+    "deploy": "graph deploy --product hosted-service defichaindomains/defichain-domains-registry",
+    "create-local": "graph create --node http://localhost:8020/ defichaindomains/defichain-domains-registry",
+    "remove-local": "graph remove --node http://localhost:8020/ defichaindomains/defichain-domains-registry",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 defichaindomains/defichain-domains-registry",
     "test": "graph test"
   },
   "dependencies": {
