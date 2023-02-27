@@ -10,7 +10,7 @@ dataSources:
     name: ENSRegistry
     network: mumbai
     source:
-      address: "0x0277015E7cBa544a8acd4a3dB0331A74807e12ea"
+      address: "0xCa33092AE06D170791C1d0E1177e884Db8b1eEBF"
       abi: EnsRegistry
       startBlock: 28921000
     mapping:
@@ -38,7 +38,7 @@ dataSources:
     name: Resolver
     network: mumbai
     source:
-      address: "0xDfFD5b71f14A42dCc20f8D8553a25244cb6F0605"
+      address: "0x35702556b74f79eE1014A966eb1cC880Dc0b87Ee"
       abi: Resolver
       startBlock: 28921000
     mapping:
@@ -84,7 +84,7 @@ dataSources:
     name: BaseRegistrar
     network: mumbai
     source:
-      address: "0xE4E073Affc03fC569a1649a3B0E9fDF6e2B57750"
+      address: "0x04AE965f4a9079A6ED02309373AFcbf841170c51"
       abi: BaseRegistrar
       startBlock: 28921000
     mapping:
@@ -109,7 +109,7 @@ dataSources:
     name: EthRegistrarController
     network: mumbai
     source:
-      address: "0x2E695C404A83226d277f1B5eFBDB13F28b0BD52f"
+      address: "0x76B7a71A24fbe6E01a107A8A915080C0632F5C39"
       abi: EthRegistrarController
       startBlock: 28921000
     mapping:
