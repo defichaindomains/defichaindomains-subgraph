@@ -1,4 +1,4 @@
-# ENS Subgraph
+# Defichain Domains Subgraph
 
 This Subgraph sources events from the Defichain Domains contracts. This includes the Defichain Domains registry, and any resolvers that are created and linked to domains. The resolvers are added through dynamic data sources. More information on all of this can be found at [The Graph Documentation](https://thegraph.com/docs/developer/quick-start/).
 
