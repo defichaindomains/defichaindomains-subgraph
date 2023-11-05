@@ -12,7 +12,6 @@ dataSources:
     source:
       address: "0x6193a2BD2d0f9bA2fBE599a160585E6AcEaB0Ab8"
       abi: EnsRegistry
-      startBlock: 32866
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -40,7 +39,6 @@ dataSources:
     source:
       address: "0x0d3057dD852481d5a2EB3B708D1a14bDFd3DBCA7"
       abi: Resolver
-      startBlock: 32866
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -86,7 +84,6 @@ dataSources:
     source:
       address: "0xdbc40BC6D079DD0056b0aA72d1700f47F327E8E3"
       abi: BaseRegistrar
-      startBlock: 32866
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -111,7 +108,6 @@ dataSources:
     source:
       address: "0x9C8fBb73A152F1B09f57F4d7d2D43484a2F39cd4"
       abi: EthRegistrarController
-      startBlock: 32866
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
