@@ -8,7 +8,7 @@ schema:
 dataSources:
   - kind: ethereum
     name: ENSRegistry
-    network: mainnet
+    network: testnet
     source:
       address: "0x90eeA5122Acc8089Bc43E75c336636699CcaE9EC"
       abi: EnsRegistry
@@ -36,7 +36,7 @@ dataSources:
           handler: handleNewTTL
   - kind: ethereum
     name: Resolver
-    network: mainnet
+    network: testnet
     source:
       address: "0x13eB2DA2cDF63E2258544212B5d4543cf6611dEC"
       abi: Resolver
@@ -82,7 +82,7 @@ dataSources:
           handler: handleTextChanged
   - kind: ethereum
     name: BaseRegistrar
-    network: mainnet
+    network: testnet
     source:
       address: "0xD9899652B10Ba327ec86EE28248beaae89623302"
       abi: BaseRegistrar
@@ -107,7 +107,7 @@ dataSources:
           handler: handleNameTransferred
   - kind: ethereum
     name: EthRegistrarController
-    network: mainnet
+    network: testnet
     source:
       address: "0xa3f729f1CFf578aD071c0a2543fC2CA63D448DAA"
       abi: EthRegistrarController
