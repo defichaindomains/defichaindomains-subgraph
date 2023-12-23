@@ -6,7 +6,7 @@ repository: "https://github.com/defichaindomains/subgraph"
 schema:
   file: ./schema.graphql
 dataSources:
-  - kind: ethereum
+  - kind: ethereum/contract
     name: ENSRegistry
     network: testnet
     source:
@@ -34,7 +34,7 @@ dataSources:
           handler: handleNewResolver
         - event: "NewTTL(indexed bytes32,uint64)"
           handler: handleNewTTL
-  - kind: ethereum
+  - kind: ethereum/contract
     name: Resolver
     network: testnet
     source:
@@ -80,7 +80,7 @@ dataSources:
           handler: handlePubkeyChanged
         - event: "TextChanged(indexed bytes32,indexed string,string)"
           handler: handleTextChanged
-  - kind: ethereum
+  - kind: ethereum/contract
     name: BaseRegistrar
     network: testnet
     source:
@@ -105,7 +105,7 @@ dataSources:
           handler: handleNameRegistered
         - event: "Transfer(indexed address,indexed address,indexed uint256)"
           handler: handleNameTransferred
-  - kind: ethereum
+  - kind: ethereum/contract
     name: EthRegistrarController
     network: testnet
     source:
