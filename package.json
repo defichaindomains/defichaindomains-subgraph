@@ -1,15 +1,15 @@
 {
-  "name": "defichaindomains-subgraph",
+  "name": "subgraph",
   "version": "1.0.0",
   "repository": "https://github.com/defichaindomains/subgraph",
   "license": "UNLICENSED",
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --product hosted-service defichaindomains/defichain-domains-registry",
-    "create-local": "graph create --node http://localhost:8020/ defichaindomains/defichain-domains-registry",
-    "remove-local": "graph remove --node http://localhost:8020/ defichaindomains/defichain-domains-registry",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 defichaindomains/defichain-domains-registry",
+    "deploy": "graph deploy --product hosted-service defichaindomains/subgraph",
+    "create-local": "graph create --node http://localhost:8020/ defichaindomains/subgraph",
+    "remove-local": "graph remove --node http://localhost:8020/ defichaindomains/subgraph",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 defichaindomains/subgraph",
     "test": "graph test"
   },
   "dependencies": {
