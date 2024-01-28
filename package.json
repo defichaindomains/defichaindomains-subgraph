@@ -10,6 +10,9 @@
     "create-local": "graph create --node http://localhost:8020/ defichaindomains/subgraph",
     "remove-local": "graph remove --node http://localhost:8020/ defichaindomains/subgraph",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 defichaindomains/subgraph",
+    "create-vps": "graph create --node http://194.35.12.206:8020/ defichaindomains/subgraph",
+    "remove-vps": "graph remove --node http://194.35.12.206:8020/ defichaindomains/subgraph",
+    "deploy-vps": "graph deploy --node http://194.35.12.206:8020/ --ipfs http://194.35.12.206:5001 defichaindomains/subgraph",
     "test": "graph test"
   },
   "dependencies": {

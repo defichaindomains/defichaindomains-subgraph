@@ -10,9 +10,9 @@ dataSources:
     name: ENSRegistry
     network: testnet
     source:
-      address: "0x90eeA5122Acc8089Bc43E75c336636699CcaE9EC"
+      address: "0x78c306Cc4254d1790d09eAf046ECc6B5EA81d3af"
       abi: EnsRegistry
-      startBlock: 131418
+      startBlock: 187113
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -38,9 +38,9 @@ dataSources:
     name: Resolver
     network: testnet
     source:
-      address: "0x13eB2DA2cDF63E2258544212B5d4543cf6611dEC"
+      address: "0x39F46dB5bF0Ff77Fc07Ab9f5059165cA36D04824"
       abi: Resolver
-      startBlock: 131418
+      startBlock: 187113
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -84,9 +84,9 @@ dataSources:
     name: BaseRegistrar
     network: testnet
     source:
-      address: "0xD9899652B10Ba327ec86EE28248beaae89623302"
+      address: "0xDa08866105Bf34EE46Be87926524fF3B17a14782"
       abi: BaseRegistrar
-      startBlock: 131418
+      startBlock: 187113
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -109,9 +109,9 @@ dataSources:
     name: EthRegistrarController
     network: testnet
     source:
-      address: "0xa3f729f1CFf578aD071c0a2543fC2CA63D448DAA"
+      address: "0x94FCb9CC785A65cB785Cb1248D3670897Ae77e2e"
       abi: EthRegistrarController
-      startBlock: 131418
+      startBlock: 187113
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
