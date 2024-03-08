@@ -8,11 +8,11 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: ENSRegistry
-    network: mainnet
+    network: mumbai
     source:
-      address: "0xc42406719Ed4A088578D60BB7970AA8716aFA427"
+      address: "0x5C260f43023803fD8205258cc8C8899f9bF6AC2C"
       abi: EnsRegistry
-      startBlock: 41107729
+      startBlock: 46799072
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -36,11 +36,11 @@ dataSources:
           handler: handleNewTTL
   - kind: ethereum/contract
     name: Resolver
-    network: mainnet
+    network: mumbai
     source:
-      address: "0x1C8004e251A1680E3DFaC358acFf172aD21FC576"
+      address: "0x89282BE076636BD8C89F29013Ad891dEF8C94aa4"
       abi: Resolver
-      startBlock: 41107729
+      startBlock: 46799072
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -82,11 +82,11 @@ dataSources:
           handler: handleTextChanged
   - kind: ethereum/contract
     name: BaseRegistrar
-    network: mainnet
+    network: mumbai
     source:
-      address: "0xc0f2C1a6AFc852D3D18b7b499Dad5955f684Bd84"
+      address: "0xA3E209fE6297dC9765730AB90Fe2BB9e8e672eb3"
       abi: BaseRegistrar
-      startBlock: 41107729
+      startBlock: 46799072
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -107,11 +107,11 @@ dataSources:
           handler: handleNameTransferred
   - kind: ethereum/contract
     name: EthRegistrarController
-    network: mainnet
+    network: mumbai
     source:
-      address: "0xE80e21DD234E947286f130E885abe6592C10ff41"
+      address: "0xC1CFBb070CADcc92ba74cCDa425A07e62c8C4153"
       abi: EthRegistrarController
-      startBlock: 41107729
+      startBlock: 46799072
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
