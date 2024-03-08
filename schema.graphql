@@ -5,12 +5,10 @@ type Domain @entity {
   labelhash: Bytes # keccak256(labelName)
   parent: Domain # The namehash (id) of the parent name
   subdomains: [Domain!]! @derivedFrom(field: "parent") # Can count domains from length of array
-  subdomainCount: Int! # The number of subdomains
   resolvedAddress: Account # Address logged from current resolver, if any
   owner: Account!
   resolver: Resolver
   ttl: BigInt
-  isMigrated: Boolean!
   createdAt: BigInt!
   events: [DomainEvent!]! @derivedFrom(field: "domain")
 }
@@ -101,7 +99,8 @@ type Resolver @entity {
   addr: Account # Current value of addr record (per events)
   contentHash: Bytes # Content hash, in binary format.
   texts: [String!] # Set of observed text record keys
-  coinTypes: [BigInt!] # Set of observed SLIP-44 coin types
+  rrs: [Bytes!] # Set of observed dns rr set keys
+  coinTypes: [Int!] # Set of observed SLIP-44 coin types
   events: [ResolverEvent!]! @derivedFrom(field: "resolver")
 }
 
@@ -125,7 +124,7 @@ type MulticoinAddrChanged implements ResolverEvent @entity {
   resolver: Resolver!
   blockNumber: Int!
   transactionID: Bytes!
-  coinType: BigInt!
+  coinType: Int!
   addr: Bytes!
 }
 
@@ -160,7 +159,6 @@ type TextChanged implements ResolverEvent @entity {
   blockNumber: Int!
   transactionID: Bytes!
   key: String!
-  value: String
 }
 
 type ContenthashChanged implements ResolverEvent @entity {
