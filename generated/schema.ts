@@ -120,6 +120,7 @@ export class Domain extends Entity {
 
   get subdomains(): DomainLoader {
     return new DomainLoader("Domain", this.get("id")!.toString(), "subdomains");
+
   }
 
   get subdomainCount(): i32 {
@@ -133,6 +134,7 @@ export class Domain extends Entity {
 
   set subdomainCount(value: i32) {
     this.set("subdomainCount", Value.fromI32(value));
+
   }
 
   get resolvedAddress(): string | null {
@@ -199,6 +201,7 @@ export class Domain extends Entity {
     }
   }
 
+
   get isMigrated(): boolean {
     let value = this.get("isMigrated");
     if (!value || value.kind == ValueKind.NULL) {
@@ -211,6 +214,7 @@ export class Domain extends Entity {
   set isMigrated(value: boolean) {
     this.set("isMigrated", Value.fromBoolean(value));
   }
+
 
   get createdAt(): BigInt {
     let value = this.get("createdAt");
@@ -1088,22 +1092,23 @@ export class Resolver extends Entity {
     }
   }
 
-  get coinTypes(): Array<BigInt> | null {
-    let value = this.get("coinTypes");
+  get rrs(): Array<Bytes> | null {
+    let value = this.get("rrs");
     if (!value || value.kind == ValueKind.NULL) {
       return null;
     } else {
-      return value.toBigIntArray();
+      return value.toBytesArray();
     }
   }
 
-  set coinTypes(value: Array<BigInt> | null) {
+  set rrs(value: Array<Bytes> | null) {
     if (!value) {
-      this.unset("coinTypes");
+      this.unset("rrs");
     } else {
-      this.set("coinTypes", Value.fromBigIntArray(<Array<BigInt>>value));
+      this.set("rrs", Value.fromBytesArray(<Array<Bytes>>value));
     }
   }
+
 }
 
 export class AddrChanged extends Entity {
@@ -1282,17 +1287,18 @@ export class MulticoinAddrChanged extends Entity {
     this.set("transactionID", Value.fromBytes(value));
   }
 
-  get coinType(): BigInt {
+  get coinType(): i32 {
     let value = this.get("coinType");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
       return value.toBigInt();
+
     }
   }
 
-  set coinType(value: BigInt) {
-    this.set("coinType", Value.fromBigInt(value));
+  set coinType(value: i32) {
+    this.set("coinType", Value.fromI32(value));
   }
 
   get addr(): Bytes {
@@ -1697,19 +1703,16 @@ export class TextChanged extends Entity {
 
   get value(): string | null {
     let value = this.get("value");
+
     if (!value || value.kind == ValueKind.NULL) {
-      return null;
+      throw new Error("Cannot return null for a required field.");
     } else {
       return value.toString();
     }
   }
 
-  set value(value: string | null) {
-    if (!value) {
-      this.unset("value");
-    } else {
-      this.set("value", Value.fromString(<string>value));
-    }
+  set key(value: string) {
+    this.set("key", Value.fromString(value));
   }
 }
 

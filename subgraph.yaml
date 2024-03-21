@@ -6,25 +6,26 @@ repository: "https://github.com/defichaindomains/subgraph"
 schema:
   file: ./schema.graphql
 dataSources:
-  - kind: ethereum/contract
+  - kind: ethereum
     name: ENSRegistry
     network: mainnet
     source:
       address: "0x6F5D8377e0aB05341A00EA8c40a58622C1D365D2"
       abi: EnsRegistry
       startBlock: 361151
+
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
       language: wasm/assemblyscript
-      file: ./src/ensRegistry.ts
+      file: ./src/ENSRegistry.ts
       entities:
         - Domain
         - Account
         - Resolver
       abis:
-        - name: EnsRegistry
-          file: ./abis/Registry.json
+        - name: ENSRegistry
+          file: ./abis/ENSRegistry.json
       eventHandlers:
         - event: "Transfer(indexed bytes32,address)"
           handler: handleTransfer
@@ -34,7 +35,7 @@ dataSources:
           handler: handleNewResolver
         - event: "NewTTL(indexed bytes32,uint64)"
           handler: handleNewTTL
-  - kind: ethereum/contract
+  - kind: ethereum
     name: Resolver
     network: mainnet
     source:
@@ -66,9 +67,7 @@ dataSources:
           handler: handleAddrChanged
         - event: "AddressChanged(indexed bytes32,uint256,bytes)"
           handler: handleMulticoinAddrChanged
-        - event: >-
-            AuthorisationChanged(indexed bytes32,indexed address,indexed
-            address,bool)
+        - event: "AuthorisationChanged(indexed bytes32,indexed address,indexed address,bool)"
           handler: handleAuthorisationChanged
         - event: "ContenthashChanged(indexed bytes32,bytes)"
           handler: handleContentHashChanged
@@ -80,7 +79,14 @@ dataSources:
           handler: handlePubkeyChanged
         - event: "TextChanged(indexed bytes32,indexed string,string)"
           handler: handleTextChanged
-  - kind: ethereum/contract
+        - event: "DNSRecordChanged(indexed bytes32,bytes,uint16,bytes)"
+          handler: handleDnsRecordChanged
+        - event: "DNSRecordDeleted(indexed bytes32,bytes,uint16)"
+          handler: handleDnsRecordDeleted
+        - event: "DNSZoneCleared(indexed bytes32)"
+          handler: handleDnsZoneCleared
+
+  - kind: ethereum
     name: BaseRegistrar
     network: mainnet
     source:
@@ -95,7 +101,6 @@ dataSources:
       entities:
         - Registration
         - NameRegistered
-        - NameRenewed
         - NameTransferred
       abis:
         - name: BaseRegistrar
@@ -112,6 +117,7 @@ dataSources:
       address: "0xC25183E263877D7d39486CF873C28D5321DC58EC"
       abi: EthRegistrarController
       startBlock: 361151
+
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -120,8 +126,8 @@ dataSources:
       entities:
         - Registration
       abis:
-        - name: EthRegistrarController
-          file: ./abis/EthRegistrarController.json
+        - name: ETHRegistrarController
+          file: ./abis/ETHRegistrarController.json
       eventHandlers:
         - event: "NameRegistered(string,indexed bytes32,indexed address,uint256)"
           handler: handleNameRegisteredByController

@@ -80,9 +80,9 @@ export class OwnershipTransferred__Params {
   }
 }
 
-export class EthRegistrarController extends ethereum.SmartContract {
-  static bind(address: Address): EthRegistrarController {
-    return new EthRegistrarController("EthRegistrarController", address);
+export class ETHRegistrarController extends ethereum.SmartContract {
+  static bind(address: Address): ETHRegistrarController {
+    return new ETHRegistrarController("ETHRegistrarController", address);
   }
 
   available(name: string): boolean {
