@@ -2,6 +2,7 @@
 src/types
 build/
 .DS_STORE
+yarn.lock
 
 # Logs
 logs

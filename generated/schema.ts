@@ -120,6 +120,21 @@ export class Domain extends Entity {
 
   get subdomains(): DomainLoader {
     return new DomainLoader("Domain", this.get("id")!.toString(), "subdomains");
+
+  }
+
+  get subdomainCount(): i32 {
+    let value = this.get("subdomainCount");
+    if (!value || value.kind == ValueKind.NULL) {
+      return 0;
+    } else {
+      return value.toI32();
+    }
+  }
+
+  set subdomainCount(value: i32) {
+    this.set("subdomainCount", Value.fromI32(value));
+
   }
 
   get resolvedAddress(): string | null {
@@ -185,6 +200,21 @@ export class Domain extends Entity {
       this.set("ttl", Value.fromBigInt(<BigInt>value));
     }
   }
+
+
+  get isMigrated(): boolean {
+    let value = this.get("isMigrated");
+    if (!value || value.kind == ValueKind.NULL) {
+      return false;
+    } else {
+      return value.toBoolean();
+    }
+  }
+
+  set isMigrated(value: boolean) {
+    this.set("isMigrated", Value.fromBoolean(value));
+  }
+
 
   get createdAt(): BigInt {
     let value = this.get("createdAt");
@@ -1079,22 +1109,6 @@ export class Resolver extends Entity {
     }
   }
 
-  get coinTypes(): Array<i32> | null {
-    let value = this.get("coinTypes");
-    if (!value || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toI32Array();
-    }
-  }
-
-  set coinTypes(value: Array<i32> | null) {
-    if (!value) {
-      this.unset("coinTypes");
-    } else {
-      this.set("coinTypes", Value.fromI32Array(<Array<i32>>value));
-    }
-  }
 }
 
 export class AddrChanged extends Entity {
@@ -1276,9 +1290,10 @@ export class MulticoinAddrChanged extends Entity {
   get coinType(): i32 {
     let value = this.get("coinType");
     if (!value || value.kind == ValueKind.NULL) {
-      return 0;
+      throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toI32();
+      return value.toBigInt();
+
     }
   }
 
@@ -1675,6 +1690,20 @@ export class TextChanged extends Entity {
 
   get key(): string {
     let value = this.get("key");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toString();
+    }
+  }
+
+  set key(value: string) {
+    this.set("key", Value.fromString(value));
+  }
+
+  get value(): string | null {
+    let value = this.get("value");
+
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {

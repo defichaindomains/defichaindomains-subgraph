@@ -10,9 +10,10 @@ dataSources:
     name: ENSRegistry
     network: mainnet
     source:
-      address: "0x562F812346a7078B5304705cE65C48929E61050c"
-      abi: ENSRegistry
-      startBlock: 318047
+      address: "0x6F5D8377e0aB05341A00EA8c40a58622C1D365D2"
+      abi: EnsRegistry
+      startBlock: 361151
+
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -38,9 +39,9 @@ dataSources:
     name: Resolver
     network: mainnet
     source:
-      address: "0x98bF17130b1F25F112028240AFc111c84Fa1bBa3"
+      address: "0xE13DF5c6dD9DD0f2731A5fa1142A0Ad18d766dD1"
       abi: Resolver
-      startBlock: 318047
+      startBlock: 361151
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -89,9 +90,9 @@ dataSources:
     name: BaseRegistrar
     network: mainnet
     source:
-      address: "0x32db5ec098453B3e4f9b48D31a0e4f65d011b7c5"
+      address: "0x29BA6187051B10ef2ef5Bb475F08519a11Cca1Dc"
       abi: BaseRegistrar
-      startBlock: 318047
+      startBlock: 361151
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -109,14 +110,14 @@ dataSources:
           handler: handleNameRegistered
         - event: "Transfer(indexed address,indexed address,indexed uint256)"
           handler: handleNameTransferred
-
-  - kind: ethereum
-    name: ETHRegistrarController
+  - kind: ethereum/contract
+    name: EthRegistrarController
     network: mainnet
     source:
-      address: "0xC39C41aA3208a441DC4E679a30EC6781654b64b6"
-      abi: ETHRegistrarController
-      startBlock: 318047
+      address: "0xC25183E263877D7d39486CF873C28D5321DC58EC"
+      abi: EthRegistrarController
+      startBlock: 361151
+
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
